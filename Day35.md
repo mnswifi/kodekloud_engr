@@ -1,27 +1,54 @@
 # Install Docker packages and Start Docker Service
 
-## Remove old docker versions
+## Install Docker on Centos 7
 
-sudo yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+### Remove old docker versions
 
-## Install required packages
+- sudo yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
 
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+### Install required packages
 
-## Add docker repository
+- sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+### Add docker repository
 
-## Install Docker
+- sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-sudo yum install -y docker-ce docker-ce-cli containerd.io
+### Install Docker
 
-## Start & enable Docker
+- sudo yum install -y docker-ce docker-ce-cli containerd.io
 
-sudo systemctl start docker
-sudo systemctl enable docker
+### Start & enable Docker
 
-## Verify Docker
+- sudo systemctl start docker
+- sudo systemctl enable docker
 
-docker --version
-sudo docker run hello-world
+### Verify Docker
+
+- docker --version
+- sudo docker run hello-world
+
+--------------------------------
+
+## Install Docker on CentOS Stream 8/9
+
+### Remove Podman conflicts
+
+- Sudo dnf remove -y podman buildah
+
+### Add Docker repository
+
+- sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+### Install Docker (centOS 8/9 )
+
+- sudo dnf install -y docker-ce docker-ce-cli containerd.io
+
+### Start and enable docker
+
+- sudo systemctl start docker
+- sudo systemctl enable docker
+
+### Test Docker
+
+- sudo docker run hello-world
